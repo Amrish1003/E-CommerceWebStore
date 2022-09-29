@@ -34,6 +34,7 @@ namespace ECommerceAPI
               x.UseSqlite(Configuration.GetConnectionString("DefaultConnection"))
             );
             services.AddControllers();
+            services.AddCors();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,8 +45,14 @@ namespace ECommerceAPI
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors(builder =>
+            {
+                builder
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+            });
             app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
@@ -54,6 +61,8 @@ namespace ECommerceAPI
             {
                 endpoints.MapControllers();
             });
+            
+           
         }
     }
 }
