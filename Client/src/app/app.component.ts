@@ -1,10 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import {HttpClient, HttpClientModule} from  '@angular/common/http';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'Client';
+  constructor(private http: HttpClient) {
+  }
+  ngOnInit(): void {
+    this.http.get('https://localhost:44364/api/products').subscribe((response: any)=>{
+      console.log(response);
+    })
+  }
+  
 }
