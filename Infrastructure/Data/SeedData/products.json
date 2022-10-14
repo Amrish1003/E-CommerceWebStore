@@ -41,7 +41,7 @@
   },
   {
     "Name": "Typescript Entry Board",
-    "c": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
+    "Description": "Aenean nec lorem. In porttitor. Donec laoreet nonummy augue.",
     "Price": 120,
     "PictureUrl": "images/products/sb-ts1.png",
     "ProductTypeId": 1,

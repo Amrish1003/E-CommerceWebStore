@@ -35,6 +35,7 @@ namespace ECommerceAPI
             );
             services.AddControllers();
             services.AddCors();
+            services.AddSwaggerGen();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -44,7 +45,11 @@ namespace ECommerceAPI
             {
                 app.UseDeveloperExceptionPage();
             }
-
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "My Test1 Api v1");
+            });
             app.UseCors(builder =>
             {
                 builder
@@ -54,7 +59,7 @@ namespace ECommerceAPI
             });
             app.UseHttpsRedirection();
             app.UseRouting();
-
+            app.UseStaticFiles();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
